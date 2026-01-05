@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ReWear - Home</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="/assets/logo.svg" alt="ReWear logo"/>
+        <span class="brand-text">ReWear</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a data-nav href="/" data-i18n="nav_home">Home</a>
+        <a data-nav href="/pages/messages.html" data-i18n="nav_messages">Messages</a>
+        <a data-nav class="notif-link" href="/pages/notifications.html">
+          <span data-i18n="nav_notifications">Notifications</span>
+          <span id="notifBadge"></span>
+        </a>
+        <a data-nav href="/pages/favorites.html" data-i18n="nav_favorites">Favorites</a>
+        <a data-nav href="/pages/about.html">About Us</a>
+      </nav>
+
+      <div class="actions">
+        <a class="mini-buy" href="/pages/buy.html" title="Buy / Cart" aria-label="Buy / Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
+          </svg>
+        </a>
+        <div class="dropdown" id="settingsDropdown">
+          <button class="btn" id="settingsBtn" type="button">
+            <span data-i18n="nav_settings">Settings</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="menu" id="settingsMenu" aria-hidden="true">
+            <a href="/pages/settings.html" data-i18n="menu_settings">Settings</a>
+            <a href="/pages/settings.html#profile" data-i18n="menu_change_name">Change Name</a>
+            <a href="/pages/settings.html#password" data-i18n="menu_change_password">Change Password</a>
+            <div class="menu-sep"></div>
+            <a href="/pages/dashboard.html" data-i18n="menu_dashboard">Dashboard</a>
+            <a href="/pages/help.html" data-i18n="menu_help">Help</a>
+          </div>
+        </div>
+
+        <span id="navUser" class="badge">Guest</span>
+        <a id="btnLogin" class="btn primary" href="/pages/auth.html"><span data-i18n="btn_signin">Sign in</span></a>
+        <button id="btnLogout" class="btn danger" style="display:none"><span data-i18n="btn_logout">Logout</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<section class="grid">
+  <div class="card card-pad" style="grid-column: span 8;">
+    <div class="h1" data-i18n="home_trade">Trade. Sell. Donate.</div>
+    <p class="p">ReWear helps you list items (Sale/Exchange/Free) and chat with other users. Use <b>Browse by Category</b> to filter fast.</p>
+    <hr class="sep"/>
+    <div class="row">
+      <a class="btn success" href="/pages/browse.html">Browse items</a>
+      <a class="btn primary" href="/pages/add-post.html">Add a post</a>
+    </div>
+  </div>
+  <div class="card card-pad" style="grid-column: span 4;">
+    <div class="h2">Browse by Category</div>
+    <p class="small">Quick filter</p>
+    <select id="homeGroup" class="input"></select>
+    <div style="height:10px"></div>
+    <select id="homeCategory" class="input" disabled></select>
+    <div style="height:10px"></div>
+    <button id="homeGo" class="btn primary" style="width:100%">Go</button>
+  </div>
+</section>
+
+<section class="card card-pad" style="margin-top:14px">
+  <div class="h2" data-i18n="home_latest">Latest Posts</div>
+  <div id="latest" class="list"></div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="h2" data-i18n="footer_title">ReWear</div>
+        <p class="p" data-i18n="footer_tagline">A local marketplace to buy, sell, exchange, or give away items — with fast chat and smart filters.</p>
+        <div class="small" data-i18n="footer_note">Tip: Use “Browse” filters to find items near you.</div>
+      </div>
+      <div>
+        <div class="h2" data-i18n="footer_quick">Quick links</div>
+        <div class="list">
+          <a href="/pages/browse.html" data-i18n="nav_browse">Browse</a>
+          <a href="/pages/add-post.html" data-i18n="nav_add">Add Post</a>
+          <a href="/pages/messages.html" data-i18n="nav_messages">Messages</a>
+          <a href="/pages/help.html" data-i18n="nav_help">Help</a>
+          <a href="/pages/contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="h2" data-i18n="footer_social">Social</div>
+        <div class="list">
+          <a href="https://www.facebook.com/rewearapp" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="#" target="_blank" rel="noreferrer">X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+      <div class="container" style="padding:10px 0 18px 0">
+      <div class="small" style="opacity:.8">© 2026 ReWear. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initLayout } from "/js/layout.js";
+    initLayout();
+  </script>
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

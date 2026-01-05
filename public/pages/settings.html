@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ReWear - Settings</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="/assets/logo.svg" alt="ReWear logo"/>
+        <span class="brand-text">ReWear</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a data-nav href="/" data-i18n="nav_home">Home</a>
+        <a data-nav href="/pages/messages.html" data-i18n="nav_messages">Messages</a>
+        <a data-nav class="notif-link" href="/pages/notifications.html">
+          <span data-i18n="nav_notifications">Notifications</span>
+          <span id="notifBadge"></span>
+        </a>
+        <a data-nav href="/pages/favorites.html" data-i18n="nav_favorites">Favorites</a>
+        <a data-nav href="/pages/about.html">About Us</a>
+      </nav>
+
+      <div class="actions">
+        <div class="dropdown" id="settingsDropdown">
+          <button class="btn" id="settingsBtn" type="button">
+            <span data-i18n="nav_settings">Settings</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="menu" id="settingsMenu" aria-hidden="true">
+            <a href="/pages/settings.html" data-i18n="menu_settings">Settings</a>
+            <a href="/pages/settings.html#profile" data-i18n="menu_change_name">Change Name</a>
+            <a href="/pages/settings.html#password" data-i18n="menu_change_password">Change Password</a>
+            <a href="/pages/settings.html#account" data-i18n="menu_change_contact">Change Email / Phone</a>
+            <div class="menu-sep"></div>
+            <a href="/pages/dashboard.html" data-i18n="menu_dashboard">Dashboard</a>
+            <a href="/pages/help.html" data-i18n="menu_help">Help</a>
+          </div>
+        </div>
+
+        <span id="navUser" class="badge">Guest</span>
+        <a id="btnLogin" class="btn primary" href="/pages/auth.html"><span data-i18n="btn_signin">Sign in</span></a>
+        <button id="btnLogout" class="btn danger" style="display:none"><span data-i18n="btn_logout">Logout</span></button>
+      </div>
+    </div>
+  </header>
+
+  
+<main class="container">
+
+  <!-- Preferences -->
+  <section class="card card-pad" id="preferences">
+    <div class="h1" data-i18n="settings_title">Settings</div>
+    <p class="p" data-i18n="settings_hint">Update your preferences.</p>
+    <hr class="sep"/>
+
+    <div class="grid2">
+      <div>
+        <label class="small" data-i18n="settings_language">Preferred language</label>
+        <select id="lang" class="input">
+          <option value="en">English</option>
+          <option value="ar">Arabic</option>
+        </select>
+      </div>
+      <div>
+        <label class="small" data-i18n="settings_theme">Theme</label>
+        <select id="theme" class="input">
+          <option value="dark" data-i18n="theme_dark">Dark</option>
+          <option value="light" data-i18n="theme_light">Light</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+    <button id="save" class="btn primary" data-i18n="btn_save">Save</button>
+    <span class="small" id="msg" style="margin-left:10px"></span>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- Profile -->
+  <section class="card card-pad" id="profile">
+    <div class="h1" data-i18n="profile_title">Profile</div>
+    <p class="p" data-i18n="profile_hint">Update your display name.</p>
+    <hr class="sep"/>
+
+    <label class="small" data-i18n="profile_name">Name</label>
+    <input id="nameInput" class="input" placeholder="Your name"/>
+    <div style="height:12px"></div>
+    <button class="btn primary" id="saveNameBtn" data-i18n="profile_save_name">Save Name</button>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- Password -->
+  <section class="card card-pad" id="account">
+    <div class="h1">Account</div>
+    <p class="p">Change your email or phone number.</p>
+    <hr class="sep"/>
+
+    <label class="small">Email</label>
+    <input id="emailInput" class="input" placeholder="you@example.com"/>
+
+    <div style="height:12px"></div>
+
+    <label class="small">Phone Number</label>
+    <input id="phoneInput" class="input" placeholder="+9627XXXXXXXX"/>
+
+    <div style="height:12px"></div>
+    <button class="btn primary" id="saveAccountBtn">Save</button>
+    <div id="accountMsg" class="small" style="margin-top:10px;opacity:.85"></div>
+  </section>
+
+  <section class="card card-pad" id="password">
+    <div class="h1" data-i18n="password_title">Change Password</div>
+    <p class="p" data-i18n="password_hint">Use a strong password.</p>
+    <hr class="sep"/>
+
+    <div class="grid2">
+      <div>
+        <label class="small" data-i18n="password_old">Old password</label>
+        <input id="oldPass" class="input" type="password" placeholder="Old password"/>
+      </div>
+      <div>
+        <label class="small" data-i18n="password_new">New password</label>
+        <input id="newPass" class="input" type="password" placeholder="New password"/>
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+    <button class="btn primary" id="changePassBtn" data-i18n="password_change_btn">Change Password</button>
+  </section>
+
+</main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="h2" data-i18n="footer_title">ReWear</div>
+        <p class="p" data-i18n="footer_tagline">A local marketplace to buy, sell, exchange, or give away items — with fast chat and smart filters.</p>
+        <div class="small" data-i18n="footer_note">Tip: Use “Browse” filters to find items near you.</div>
+      </div>
+      <div>
+        <div class="h2" data-i18n="footer_quick">Quick links</div>
+        <div class="list">
+          <a href="/pages/browse.html" data-i18n="nav_browse">Browse</a>
+          <a href="/pages/add-post.html" data-i18n="nav_add">Add Post</a>
+          <a href="/pages/messages.html" data-i18n="nav_messages">Messages</a>
+          <a href="/pages/help.html" data-i18n="nav_help">Help</a>
+          <a href="/pages/contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="h2" data-i18n="footer_social">Social</div>
+        <div class="list">
+          <a href="https://www.facebook.com/rewearapp" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="#" target="_blank" rel="noreferrer">X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+      <div class="container" style="padding:10px 0 18px 0">
+      <div class="small" style="opacity:.8">© 2026 ReWear. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initLayout } from "/js/layout.js";
+    initLayout();
+  </script>
+  <script type="module" src="/js/settings.js"></script>
+</body>
+</html>

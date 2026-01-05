@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ReWear - Contact Us</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="/assets/logo.svg" alt="ReWear logo"/>
+        <span class="brand-text">ReWear</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a data-nav href="/">Home</a>
+        <a data-nav href="/pages/browse.html">Browse</a>
+        <a data-nav href="/pages/add-post.html">Add Post</a>
+        <a data-nav href="/pages/messages.html">Messages</a>
+        <a data-nav href="/pages/about.html">About Us</a>
+      </nav>
+
+      <div class="actions">
+        <span id="navUser" class="badge">Guest</span>
+        <a id="btnLogin" class="btn primary" href="/pages/auth.html">Sign in</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:22px">
+    <section class="card card-pad">
+      <div class="h1">Contact Us</div>
+      <p class="p">Customer support — send us your issue and we will get back to you.</p>
+      <hr class="sep"/>
+
+      <label class="small">Name</label>
+      <input id="csName" class="input" placeholder="Your name"/>
+
+      <div style="height:10px"></div>
+      <label class="small">Email</label>
+      <input id="csEmail" class="input" placeholder="you@example.com"/>
+
+      <div style="height:10px"></div>
+      <label class="small">Problem</label>
+      <input id="csProblem" class="input" placeholder="Short summary"/>
+
+      <div style="height:10px"></div>
+      <label class="small">Details</label>
+      <textarea id="csDetails" class="input" rows="5" placeholder="Explain what happened..."></textarea>
+
+      <div style="height:12px"></div>
+      <button id="csSubmit" class="btn primary">Submit</button>
+      <div id="csMsg" class="small" style="margin-top:10px;opacity:.85"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="h2">ReWear</div>
+        <p class="p">A local marketplace to buy, exchange, or give away items.</p>
+      </div>
+      <div>
+        <div class="h2">Quick links</div>
+        <div class="list">
+          <a href="/pages/browse.html">Browse</a>
+          <a href="/pages/add-post.html">Add Post</a>
+          <a href="/pages/about.html">About Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="h2">Social</div>
+        <div class="list">
+          <a href="https://www.facebook.com/rewearapp" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="#" target="_blank" rel="noreferrer">X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="padding:10px 0 18px 0">
+      <div class="small" style="opacity:.8">© 2026 ReWear. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { $, toast } from "/js/api.js";
+    $("#csSubmit")?.addEventListener("click", ()=>{
+      const name = ($("#csName")?.value||"").trim();
+      const email = ($("#csEmail")?.value||"").trim();
+      const problem = ($("#csProblem")?.value||"").trim();
+      const details = ($("#csDetails")?.value||"").trim();
+      const msg = $("#csMsg");
+      if (!name || !email || !problem) {
+        toast("Please fill name, email, and problem");
+        if (msg) msg.textContent = "Missing required fields.";
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        toast("Invalid email");
+        if (msg) msg.textContent = "Invalid email.";
+        return;
+      }
+      // demo submit (no backend storage)
+      if (msg) msg.textContent = "Submitted. Our support will contact you soon.";
+      toast("Submitted");
+      $("#csProblem").value="";
+      $("#csDetails").value="";
+    });
+  </script>
+</body>
+</html>
